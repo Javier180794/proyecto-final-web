@@ -7,10 +7,11 @@ const app = express();
 app.use(cors());
 
 const conexion = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '#Animaljam12', 
-    database: 'portafolio'
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: process.env.MYSQLPORT
 });
 
 conexion.connect((err) => {
@@ -37,6 +38,8 @@ app.get('/tareas', (req, res) => {
 
 });
 
-app.listen(3000, () => {
-    console.log('Servidor ejecutándose en http://localhost:3000');
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Servidor ejecutándose en puerto ${PORT}`);
 });
