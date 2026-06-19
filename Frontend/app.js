@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/tareas')
+fetch('https://proyecto-final-web-production-5207.up.railway.app/tareas')
     .then(response => response.json())
     .then(data => {
 
